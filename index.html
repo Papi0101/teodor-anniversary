@@ -7,107 +7,88 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="falling"></div>
 
-<div class="court-stamp">ПОВЕРИТЕЛНО</div>
-
-<main id="app">
-
-<section class="screen active">
+<main>
+<section class="card">
 <h1>⚖️ СЪДЕБЕН СПОР</h1>
-<h2>Специално дело: Петя срещу Теодор Илиев</h2>
+<h2>Делото на Петя срещу Теодор Илиев</h2>
 <p>Дело №26092019</p>
-<p>Продължителност: 6 години</p>
-<button onclick="next()">Влизам в залата, дупе</button>
-</section>
 
-<section class="screen">
-<h2>📂 Доказателство №1</h2>
-<p>Господин Илиев, проверка на паметта:</p>
-<p>Къде и през коя година беше ПЪРВАТА ПЪРВА среща?</p>
-<div class="choices">
-<button onclick="answer(true)">Relax, Надежда - 2018</button>
-<button onclick="answer(false)">Друго място</button>
+<div class="counter">
+<h3>❤️ Заедно от 26.09.2019</h3>
+<div id="time">Зареждане...</div>
 </div>
-<p id="feedback"></p>
-<button class="hidden" id="continue" onclick="next()">Продължи</button>
+
+<button onclick="show(1)">Влизам в залата, дупе</button>
 </section>
 
-<section class="screen">
+<section class="card hidden" id="s1">
+<h2>📂 Доказателство №1</h2>
+<p>Господин Илиев, отговорете без помощ от адвокат:</p>
+<p>Къде и през коя година беше ПЪРВАТА ПЪРВА среща?</p>
+<input id="q1" placeholder="Напиши отговора">
+<button onclick="check()">Предай доказателството</button>
+<p id="result"></p>
+<button onclick="show(2)">Продължи</button>
+</section>
+
+<section class="card hidden" id="s2">
 <h2>🛣️ Как стигнахме дотук</h2>
-<div class="timeline">
 <p>☕ Relax, Надежда - 2018</p>
 <p>🚗 Взимане от училище</p>
 <p>📍 Суита</p>
 <p>❤️ 26.09.2019 - официално начало</p>
-<p>👥 Тайни свидетели: мама и тате</p>
-<p>🔨 Гинци - безкрайна мисия</p>
-</div>
-<button onclick="next()">Следващо дело</button>
+<p>👥 Тайни свидетели: майка ти и баща ти</p>
+<button onclick="show(3)">Следващо</button>
 </section>
 
-<section class="screen">
-<h2>⚠️ Обвинение №1: ИНАТ</h2>
-<p>Свидетелски показания:</p>
-<blockquote>"Това мога и сам да го направя."</blockquote>
-<p>Съдът отбелязва: самочувствие - високо. Инат - още повече.</p>
-<button onclick="next()">Продължи</button>
-</section>
-
-<section class="screen">
-<h2>🔨 Делото "Гинци"</h2>
-<p>Статус:</p>
-<h3>В ПРОЦЕС</h3>
-<p>Много идеи. Много спорове. Много любов.</p>
-<p>Крайна дата: неизвестна.</p>
-<button onclick="next()">Следващо доказателство</button>
-</section>
-
-<section class="screen">
-<h2>💡 Доказателство: Идеите на Петя</h2>
-<p>Петя: "Имам идея."</p>
-<p>Първа реакция:</p>
-<h3>НЕ ТИ ЛУДА ЛИ СИ?</h3>
-<h3>НЕ НЕ НЕ, УЖАС!</h3>
-<p>След време:</p>
-<h3>Абе... то верно ще стане.</h3>
-<button onclick="next()">Продължи</button>
-</section>
-
-<section class="screen">
-<h2>🚗 Автомобилно досие</h2>
-<p>Бял Opel Frontera 1995</p>
-<p>RIP 🕊️</p>
-<p>600 € за нещо вкъщи: много.</p>
-<p>600 € за двигател на Frontera или ML: напълно разумно.</p>
-<p>Червен Mercedes ML: специално отношение.</p>
-<button onclick="next()">Последно дело</button>
-</section>
-
-<section class="screen">
-<h2>📺 Турски сериали</h2>
+<section class="card hidden" id="s3">
+<h2>🔨 Делото Гинци</h2>
 <p>Обвинение:</p>
-<blockquote>"Аз няма да гледам турски сериали."</blockquote>
-<p>Съдът представя доказателство:</p>
-<p>След 15 минути: седи и гледа.</p>
-<button onclick="next()">Присъда</button>
+<p>"Това мога и сам да го направя. НЯМА ДА ДАМ ПАРИ на никой."</p>
+<p>Съдът отбелязва:</p>
+<p>Идеи: безкрайни | Любов: повече | Ремонти: продължават</p>
+<div class="emoji">🔨 🔩 🧱</div>
+<button onclick="show(4)">Продължи</button>
 </section>
 
-<section class="screen">
-<h2>⚖️ Финално решение</h2>
-<p>След разглеждане на всички доказателства:</p>
-<p>Теодор Илиев е признат за виновен.</p>
-<p>За инат. За спорове. За много идеи.</p>
-<p>Но и за това, че е човекът до Петя през всичко.</p>
-<button onclick="fireworks()">🎆 Последно доказателство</button>
+<section class="card hidden" id="s4">
+<h2>💡 Проверка на идеите</h2>
+<p>Петя: "Имам идея."</p>
+<p class="big">НЕ ти луда ли си?</p>
+<p class="big">НЕ НЕ НЕ, УЖАС!</p>
+<p>След време:</p>
+<p class="big">Абе... то верно ще стане.</p>
+<button onclick="show(5)">Следващо</button>
 </section>
 
-<section class="screen final">
-<div id="fireworks"></div>
+<section class="card hidden" id="s5">
+<h2>🚗 Автомобилни доказателства</h2>
+<h3>Opel Frontera 1995</h3>
+<p>Бялата Frontera</p>
+<p>RIP 🕊️</p>
+<hr>
+<h3>Mercedes ML</h3>
+<p>Червеният герой.</p>
+<p>600€ за нещо вкъщи: много.</p>
+<p>600€ за двигател: напълно логично.</p>
+<button onclick="show(6)">Последно дело</button>
+</section>
+
+<section class="card hidden" id="s6">
+<h2>⚖️ Финална присъда</h2>
+<p>Теодор е признат за виновен:</p>
+<p>За инат. За спорове. За това, че първо не вярва на идеите.</p>
+<p>Но и за това, че е човекът до Петя.</p>
+<button onclick="show(7)">🎆 Последно доказателство</button>
+</section>
+
+<section class="card hidden final" id="s7">
 <h1>🎆</h1>
 <h2>Честита годишнина, дупе ❤️</h2>
 <h2>Обичкам си те много.</h2>
 </section>
-
 </main>
 
 <script src="script.js"></script>
